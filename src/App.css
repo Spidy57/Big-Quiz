@@ -1,0 +1,71 @@
+/* APP LAYOUT */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f0f5ff 0%, #d9e4ff 100%);
+  padding-bottom: 40px;
+}
+
+/* MAIN CONTENT AREA */
+.main-content {
+  flex: 1;
+  padding: 20px 0;
+}
+
+/* HEADER */
+header {
+  background: linear-gradient(90deg, #0030a0, #0051ff);
+  padding: 20px 0;
+  box-shadow: 0 4px 12px rgba(0, 81, 255, 0.4);
+  color: white;
+  font-weight: 700;
+  font-size: 28px;
+  text-align: center;
+  letter-spacing: 3px;
+  user-select: none;
+  border-radius: 0 0 12px 12px;
+}
+
+/* FOOTER */
+footer {
+  background-color: #0030a0;
+  color: white;
+  text-align: center;
+  padding: 15px 10px;
+  font-weight: 600;
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 -4px 10px rgba(0, 48, 160, 0.4);
+}
+
+/* CARDS */
+.card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 48, 160, 0.15);
+  padding: 25px 30px;
+  margin: 20px 0;
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 24px rgba(0, 48, 160, 0.3);
+}
+
+/* HEADINGS INSIDE CARDS */
+.card h2 {
+  color: #0030a0;
+  margin-bottom: 15px;
+}
+
+/* RESPONSIVE UTILITIES */
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+  }
+
+  header {
+    font-size: 22px;
+    letter-spacing: 1.5px;
+  }
+}
