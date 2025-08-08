@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Mozilla+Headline:wght@200..700&display=swap');
+
 /* RESET & BASE */
 *,
 *::before,
@@ -10,9 +12,9 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
-  background: #f9fbff;
+  background: #222;
   color: #222;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Mozilla Headline';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
@@ -22,6 +24,8 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
+  background-color: #222;
 }
 
 /* LINKS */
@@ -87,13 +91,13 @@ input:focus, select:focus, textarea:focus {
 /* TYPOGRAPHY */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
-  color: #0030a0;
+  color: white;
   margin-bottom: 0.5em;
 }
 
 p {
   margin-bottom: 1em;
-  color: #444;
+  color: white;
 }
 
 /* UTILITY CLASSES */
