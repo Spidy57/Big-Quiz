@@ -1,0 +1,49 @@
+/* Quiz Page Styling */
+.quiz-page {
+  color: #ffffff; /* white text for dark background */
+  padding: 20px;
+}
+
+.quiz-page h1 {
+  color: #ffcc00; /* golden heading for visibility */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.question-block {
+  background: #1e1e1e; /* dark gray card */
+  border: 1px solid #444;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+
+.question-block h3 {
+  color: #00e6e6; /* cyan for questions */
+  margin-bottom: 10px;
+}
+
+.question-block ul {
+  list-style: none;
+  padding: 0;
+}
+
+.question-block li {
+  background: #2a2a2a;
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.question-block li:hover {
+  background: #333333;
+}
+
+.question-block p {
+  margin-top: 10px;
+  color: #90ee90; /* light green for answers */
+  font-weight: bold;
+}
