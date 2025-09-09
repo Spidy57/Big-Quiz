@@ -18,12 +18,12 @@ app.get("/", (req, res) => {
 });
 
 // Quiz route
-app.get("/api/quiz", async (req, res) => {
+app.post("/api/quiz", async (req, res) => {
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const { topic } = req.body;
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash", generationConfig: { temperature: 0.7 } });
 
-    const prompt = `
-    Generate 5 multiple-choice quiz questions on JavaScript.
+    const prompt = `Generate 5 multiple-choice quiz questions about ${topic || "General Knowledge"}.
     Each question must have:
     - "question": a string
     - "options": an array of 4 strings (choices A, B, C, D)
@@ -33,12 +33,11 @@ app.get("/api/quiz", async (req, res) => {
     Example:
     [
       {
-        "question": "What is the output of console.log(typeof null)?",
-        "options": ["A. null", "B. object", "C. undefined", "D. number"],
-        "answer": "B"
+        "question": "",
+        "options": ["A. ", "B. ", "C. ", "D. "],
+        "answer": ""
       }
-    ]
-    `;
+    ]`;
 
     const result = await model.generateContent(prompt);
     const responseText = result.response.text();
