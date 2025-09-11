@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+
+import Silk from "../components/Silk"; 
 import "./Quizzes.css";
 
 
@@ -69,7 +71,6 @@ const Quizzes = () => {
 
   return (
     <div className="quizzes-container">
-      <h1>Quiz Game</h1>
       {showModal && (
         <div className="modal-bg">
           <div className="modal">
