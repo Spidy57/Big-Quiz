@@ -15,7 +15,7 @@ import "./AboutUs.css";
 const AboutUs = () => {
     return (
         <>
-        <h1 className="aboutus-title">Meet the Parmars: </h1>
+        <h1 className="aboutus-title">Meet the Gang: </h1>
             <div className="aboutus-wrapper">
                 <ProfileCard
                     name="Rajdeep Thorat"

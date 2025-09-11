@@ -1,3 +1,8 @@
+/* ----- Ensure mobile/desktop visibility isn't accidentally overridden ----- */
+.mobile-only { display: none !important; }
+.desktop-only { display: flex !important; }
+
+/* ---------- base navbar (kept your look) ---------- */
 .navbar {
   background: linear-gradient(90deg, #0030a0, #0051ff);
   padding: 12px 30px;
@@ -10,6 +15,8 @@
   box-shadow: 0 4px 10px rgba(0, 81, 255, 0.4);
   border-radius: 8px;
   user-select: none;
+  position: relative;
+  z-index: 1002;
 }
 
 .brand {
@@ -19,14 +26,21 @@
   font-size: 45px;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
 }
+.brand.small {
+  font-size: 20px;
+  letter-spacing: 1px;
+}
 
+/* original nav links wrapper (desktop) */
 .nav-links {
   display: flex;
   gap: 12px;
   margin: 0;
   padding: 0;
+  align-items: center;
 }
 
+/* keep your nav-link styles if you use them elsewhere */
 .nav-link {
   color: white;
   text-decoration: none;
@@ -35,9 +49,9 @@
   padding: 8px 16px;
   border-radius: 6px;
   position: relative;
-  transition: 
-    background-color 0.3s ease, 
-    transform 0.2s ease, 
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease,
     box-shadow 0.3s ease;
   white-space: nowrap;
   box-shadow: 0 0 0 rgba(255, 255, 255, 0);
@@ -55,9 +69,125 @@
   background-color: rgba(255, 255, 255, 0.25);
 }
 
-/* ACTIVE LINK STYLE for NavLink */
 .nav-link.active {
   background-color: rgba(255, 255, 255, 0.3);
   box-shadow: 0 6px 15px rgba(0, 81, 255, 0.7);
   transform: translateY(-3px);
+}
+
+/* ---------- hamburger button ---------- */
+.burger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 22px;
+  width: 36px;
+  z-index: 1003;
+}
+
+.burger-line {
+  display: block;
+  height: 2px;
+  width: 24px;
+  border-radius: 2px;
+  background: white;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+.burger.open .burger-line:nth-child(1) {
+  opacity: 0;
+  transform: translateY(7px) rotate(45deg);
+}
+.burger.open .burger-line:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.burger.open .burger-line:nth-child(3) {
+  opacity: 0;
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ---------- mobile sidebar ---------- */
+.mobile-sidebar {
+  position: fixed;
+  top: 0;
+  right: -320px;
+  width: 280px;
+  height: 100%;
+  background: linear-gradient(180deg, #0030a0, #0047d6);
+  box-shadow: -12px 0 30px rgba(0, 0, 0, 0.45);
+  padding: 20px;
+  transition: right 0.32s cubic-bezier(.2,.9,.2,1);
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-sidebar.open { right: 0; }
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* When using GooeyNav inside sidebar, make it vertical & touch-friendly */
+.mobile-sidebar .gooey-nav-container nav ul {
+  flex-direction: column;
+  gap: 14px;
+  padding: 12px 0 0 0;
+}
+
+.mobile-sidebar .gooey-nav-container nav ul li {
+  border-radius: 12px;
+  padding: 0;
+}
+
+.mobile-sidebar .gooey-nav-container nav ul li a {
+  display: block;
+  padding: 12px 14px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* keep effect visuals contained inside sidebar */
+.mobile-sidebar .gooey-nav-container .effect {
+  /* make sure effect sits relative to the selected item in the sidebar */
+  z-index: 0;
+  filter: blur(6px) contrast(100);
+}
+
+/* overlay behind the sidebar */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 1000;
+}
+
+/* ---------- small-screen breakpoint ---------- */
+@media (max-width: 768px) {
+  .desktop-only { display: none !important; }
+  .mobile-only { display: block !important; }
+
+  .brand { font-size: 30px; }
+}
+
+/* extra safety for very wide screens — hide mobile UI */
+@media (min-width: 769px) {
+  .mobile-only { display: none !important; }
+  .desktop-only { display: flex !important; }
 }
